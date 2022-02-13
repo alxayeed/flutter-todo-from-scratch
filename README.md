@@ -1,16 +1,44 @@
-# untitled
+# Todo from Scratch
 
-A new Flutter project.
+## A simple flutter todo app to kickstart and refresh flutter concepts
 
-## Getting Started
+<hr>
 
-This project is a starting point for a Flutter application.
+## Demo
 
-A few resources to get you started if this is your first Flutter project:
+<table>
+  <tr>
+    <td>Homepage</td>
+  </tr>
+  <tr>
+    <td><img src="ss/homepage.png" width="100%" height="70%" /></td>
+  </tr>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+   <tr>
+    <td>Add Task</td>
+  </tr>
+  <tr>
+    <td><img src="ss/add_task.png" width="100%" height="70%" /></td>
+  </tr>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+ </table>
+<br/><hr><br/>
+
+
+## Stacks
+
+- Flutter
+- Dart
+
+
+<br/><hr><br/>
+
+## Features
+
+```
+1.
+2.
+3.
+```
+<br/><hr><br/>
