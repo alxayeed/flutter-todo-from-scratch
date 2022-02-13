@@ -14,9 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          textTheme: GoogleFonts.nunitoSansTextTheme(
-        Theme.of(context).textTheme,
-      )),
+        textTheme: GoogleFonts.nunitoSansTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        platform: TargetPlatform.windows,
+      ),
       home: Homepage(),
       debugShowCheckedModeBanner: false,
     );
