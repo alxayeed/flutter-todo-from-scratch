@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/database_helper.dart';
 import 'package:untitled/widgets.dart';
+
+import '../models/task.dart';
 
 class TaskPage extends StatefulWidget {
   const TaskPage({Key? key}) : super(key: key);
@@ -30,13 +33,24 @@ class _TaskPageState extends State<TaskPage> {
                               image: AssetImage(
                                   "assets/images/back_arrow_icon.png")),
                         )),
-                    const Expanded(
+                    Expanded(
                       child: TextField(
-                        decoration: InputDecoration(
+                        onSubmitted: (String value) async{
+                          if(value.isNotEmpty){
+                            DatabaseHelper _dbHelper = DatabaseHelper();
+                            Task _newTask = Task(
+                              title: value,
+                            );
+                            await _dbHelper.insertTask(_newTask);
+                            print('New task has been created');
+                          }
+                          },
+                        decoration: const InputDecoration(
                           hintText: "Add a task",
                           border: InputBorder.none,
                         ),
-                        style: TextStyle(
+
+                        style: const TextStyle(
                             fontSize: 26.0,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF211551)),
@@ -55,10 +69,10 @@ class _TaskPageState extends State<TaskPage> {
                       contentPadding: EdgeInsets.symmetric(horizontal: 24.0)),
                 ),
               ),
-              TaskWidget(title: "Task 1", isDone: true),
-              TaskWidget(title: "Task 2", isDone: false),
-              TaskWidget(title: "Task 3", isDone: true),
-              TaskWidget(isDone: false),
+              const TaskWidget(title: "Task 1", isDone: true),
+              const TaskWidget(title: "Task 2", isDone: false),
+              const TaskWidget(title: "Task 3", isDone: true),
+              const TaskWidget(isDone: false),
             ],
           ),
           Positioned(

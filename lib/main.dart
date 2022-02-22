@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         ),
         platform: TargetPlatform.windows,
       ),
-      home: Homepage(),
+      home: const Homepage(),
       debugShowCheckedModeBanner: false,
     );
   }

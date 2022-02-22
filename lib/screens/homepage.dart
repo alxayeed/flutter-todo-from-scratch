@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/database_helper.dart';
 import 'package:untitled/screens/taskpage.dart';
 import 'package:untitled/widgets.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
 
+
   @override
   _HomepageState createState() => _HomepageState();
 }
 
 class _HomepageState extends State<Homepage> {
+  final DatabaseHelper _dbHelper = DatabaseHelper();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,19 +36,20 @@ class _HomepageState extends State<Homepage> {
                     height: 20.0,
                   ),
                   Expanded(
-                    child: ListView(
-                      children: const [
-                        TaskCardWidget(
-                          title: 'Get Started now',
-                          desc:
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in tempus eros. Integer aliquam suscipit diam, vel egestas lorem interdum et',
-                        ),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                        TaskCardWidget(),
-                      ],
-                    ),
+                    child: FutureBuilder(
+
+                      initialData: const [],
+                      future: _dbHelper.getAllTasks(),
+                      builder: (context, AsyncSnapshot snapshot){
+                        return ListView.builder(
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (context, index){
+                              return TaskCardWidget(
+                                title: snapshot.data[index].title,
+                              );
+                            });
+                      },
+                    )
                   )
                 ],
               ),
@@ -56,7 +61,11 @@ class _HomepageState extends State<Homepage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const TaskPage()));
+                              builder: (context) => const TaskPage()),
+                      ).then((value){
+                        setState(() {
+                        });
+                      });
                     },
                     child: Container(
                       height: 60.0,
